@@ -10,7 +10,7 @@ namespace Depoly_CICD.Controllers
         [HttpGet]
         public string Result()
         {
-            return "Check in GITHUB new1";
+            return "Check in GITHUB new";
         }
 
 
