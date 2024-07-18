@@ -35,5 +35,5 @@ jobs:
 
     - name: Copy files to deployment folder
       run: |
-        mkdir -p 'E:/Deploying_Folder'
-        cp -r out/* 'E:/Deploying_Folder'
+        mkdir 'C:\Users\PRAX\Deploying_Folder'
+        copy /Y "path\to\your\project\out\*" "C:\Users\PRAX\Deploying_Folder"
