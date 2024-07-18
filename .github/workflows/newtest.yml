@@ -1,5 +1,9 @@
 name: Local .NET Core CI/CD
 
+on:
+  push:
+    branches:
+      - master
 jobs:
   build:
     steps:
