@@ -1,32 +1,22 @@
 name: Local .NET Core CI/CD
-
-on:
+'on':
   push:
     branches:
       - master
-
 jobs:
   build:
-    runs-on: windows-latest  # Specify the Windows operating system for the job
+    runs-on: windows-latest
     steps:
       - name: Checkout code
-        run: git clone https://github.com/Sandeep1696/sandeep.git
-
-      - name: Restore dependencies
-        run: dotnet restore
-
+        run: 'git clone https://github.com/Sandeep1696/sandeep.git'
       - name: Build
         run: dotnet build --no-restore
-
       - name: Test
         run: dotnet test --no-build --verbosity normal
-
       - name: Publish
-        run: dotnet publish -c Release -o 'C:\Users\PRAX\Deploying_Folder'
-
+        run: 'dotnet publish -c Release -o ''C:\Users\PRAX\Deploying_Folder'''
       - name: Create Deployment Folder
-        run: mkdir 'C:\Users\PRAX\Deploying_Folder'
-
+        run: 'mkdir ''C:\Users\PRAX\Deploying_Folder'''
       - name: Copy files to deployment folder
         run: |
           copy /Y "path\to\your\project\out\*" "C:\Users\PRAX\Deploying_Folder"
