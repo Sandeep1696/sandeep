@@ -17,13 +17,13 @@ jobs:
         run: 'mkdir ''C:\Users\PRAX\Deploying_Folder'''
       - name: Build
         run: dotnet build --no-restore
-        working-directory: 'E:\Depoly_CICD\Depoly_CICD'
+        working-directory: ./Depoly_CICD/Depoly_CICD
       - name: Test
         run: dotnet test --no-build --verbosity normal
-        working-directory: 'E:\Depoly_CICD\Depoly_CICD'
+        working-directory: ./Depoly_CICD/Depoly_CICD
       - name: Publish
         run: 'dotnet publish -c Release -o ''C:\Users\PRAX\Deploying_Folder'''
-        working-directory: 'E:\Depoly_CICD\Depoly_CICD'
+        working-directory: ./Depoly_CICD/Depoly_CICD
       - name: Copy files to deployment folder
         run: >
           copy /Y 'C:\Users\PRAX\Deploying_Folder\*'
