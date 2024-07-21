@@ -8,15 +8,23 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Checkout code
-        run: 'git clone https://github.com/Sandeep1696/sandeep.git'
-      - name: Build
-        run: dotnet build --no-restore
-      - name: Test
-        run: dotnet test --no-build --verbosity normal
-      - name: Publish
-        run: 'dotnet publish -c Release -o ''C:\Users\PRAX\Deploying_Folder'''
+        uses: actions/checkout@v2
+      - name: Set up .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 6.0.321
       - name: Create Deployment Folder
         run: 'mkdir ''C:\Users\PRAX\Deploying_Folder'''
+      - name: Build
+        run: dotnet build --no-restore
+        working-directory: 'E:\Depoly_CICD'
+      - name: Test
+        run: dotnet test --no-build --verbosity normal
+        working-directory: 'E:\Depoly_CICD'
+      - name: Publish
+        run: 'dotnet publish -c Release -o ''C:\Users\PRAX\Deploying_Folder'''
+        working-directory: 'E:\Depoly_CICD'
       - name: Copy files to deployment folder
-        run: |
-          copy /Y "path\to\your\project\out\*" "C:\Users\PRAX\Deploying_Folder"
+        run: >
+          copy /Y 'C:\Users\PRAX\Deploying_Folder\*'
+          'C:\Users\PRAX\Deploying_Folder\'
